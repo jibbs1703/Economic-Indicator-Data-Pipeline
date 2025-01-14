@@ -1,10 +1,7 @@
 import os
 from io import StringIO
 from dotenv import load_dotenv
-import logging
 import boto3
-from botocore.exceptions import ClientError
-import tempfile
 
 
 class S3Buckets:
@@ -37,11 +34,18 @@ class S3Buckets:
         :param region: specified region during instantiation of class
         """
         if region is None:
-            self.client = boto3.client('s3', aws_access_key_id=access, aws_secret_access_key=secret)
+            self.client = boto3.client(
+                "s3", aws_access_key_id=access, aws_secret_access_key=secret
+            )
             print(secret, access, region)
         else:
-            self.location = {'LocationConstraint': region}
-            self.client = boto3.client('s3', aws_access_key_id=access, aws_secret_access_key=secret, region_name=region)
+            self.location = {"LocationConstraint": region}
+            self.client = boto3.client(
+                "s3",
+                aws_access_key_id=access,
+                aws_secret_access_key=secret,
+                region_name=region,
+            )
 
     def list_buckets(self):
         """
@@ -68,9 +72,10 @@ class S3Buckets:
             pass
         else:
             print("A new bucket will be created in your AWS account")
-            self.client.create_bucket(Bucket=bucket_name, CreateBucketConfiguration=self.location)
+            self.client.create_bucket(
+                Bucket=bucket_name, CreateBucketConfiguration=self.location
+            )
             print(f"The bucket {bucket_name} has been successfully created")
-
 
     def upload_dataframe_to_s3(self, df, bucket_name, object_name):
         """
@@ -83,7 +88,9 @@ class S3Buckets:
         """
         csv_buffer = StringIO()
         df.to_csv(csv_buffer, header=True, index=False)
-        self.client.put_object(Bucket=bucket_name, Body=csv_buffer.getvalue(), Key = object_name)
+        self.client.put_object(
+            Bucket=bucket_name, Body=csv_buffer.getvalue(), Key=object_name
+        )
         print("Dataframe is saved as CSV in S3 bucket.")
 
     def read_file(self, bucket_name, object_name):
@@ -96,6 +103,5 @@ class S3Buckets:
         :return: an object containing the file read from the S3 Bucket.
         """
         response = self.client.get_object(Bucket=bucket_name, Key=object_name)
-        file = StringIO(response['Body'].read().decode('utf-8'))
+        file = StringIO(response["Body"].read().decode("utf-8"))
         return file
-
