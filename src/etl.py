@@ -74,8 +74,8 @@ class EconomicDataETL:
 
     def run_pipeline(self):
         raw_data = self.extract()
-        # df = self.transform(raw_data)
-        # self.load(df)
+        df = self.transform(raw_data)
+        self.load(df)
 
         return "File was uploaded to S3 Bucket"
 
