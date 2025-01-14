@@ -41,7 +41,7 @@ jobs:
       run: |
         python -m ruff check src/ tests/ 
 
-    - name: Run Sync ETL file
+    - name: Run ETL file
       run: |
         echo "running python src/etl.py"
 
