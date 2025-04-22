@@ -1,5 +1,5 @@
 # Default commit message
-COMMIT_MSG ?= "repository setup and sample test"
+COMMIT_MSG ?= "repository setup"
 
 # Target to add changes to staging
 add:

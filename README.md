@@ -1,4 +1,12 @@
 # Economic-Indicator-Data-Pipeline
+![Python Version](https://img.shields.io/badge/python-3.12-blue)
+![AWS](https://img.shields.io/badge/AWS-cloud-yellow)
+![Terraform](https://img.shields.io/badge/Terraform-IaC-purple)
+![pre-commit](https://img.shields.io/badge/pre--commit-enabled-yellow)
+![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)
+![license](https://img.shields.io/github/license/peaceiris/actions-gh-pages.svg)
+![Docker](https://img.shields.io/badge/Docker-container-blue)
+![Last Commit](https://img.shields.io/github/last-commit/jibbs1703/Economic-Indicator-Data-Pipeline)
 
 ## Overview
 

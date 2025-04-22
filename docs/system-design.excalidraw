@@ -1,0 +1,46 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
+  "elements": [
+    {
+      "type": "rectangle",
+      "version": 1615,
+      "versionNonce": 567495015,
+      "isDeleted": false,
+      "id": "4Glvf5n8wRl3DfM851omT",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 6.275850475394624,
+      "x": 322.04306206859496,
+      "y": 115.63953800749263,
+      "strokeColor": "#000000",
+      "backgroundColor": "#eeeeee",
+      "width": 666.3560182502808,
+      "height": 403.6663361435417,
+      "seed": 1172979815,
+      "groupIds": [
+        "Aa-4wZ7_G_q77E5Aaer36"
+      ],
+      "strokeSharpness": "sharp",
+      "boundElementIds": [],
+      "index": "a0",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1745353094642,
+      "link": null,
+      "locked": false
+    }
+  ],
+  "appState": {
+    "gridSize": 20,
+    "gridStep": 5,
+    "gridModeEnabled": false,
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}

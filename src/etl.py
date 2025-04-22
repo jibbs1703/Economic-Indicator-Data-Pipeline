@@ -4,14 +4,14 @@ import pandas as pd
 import requests
 import yaml
 
-from aws_tools.s3 import S3Buckets
+from utils.s3 import S3Buckets
 
 # Access Config File for Pipeline Variables
 with open("config.yaml") as file:
     variables = yaml.safe_load(file)
 
 
-class EconomicDataETL:
+class WBData:
     def __init__(
         self,
         indicators,
@@ -98,7 +98,7 @@ class EconomicDataETL:
 
 
 if __name__ == "__main__":
-    ed = EconomicDataETL(
+    ed = WBData(
         indicators=variables["INDICATORS"], countries=variables["COUNTRIES"]
     )
     ed.run_pipeline()
