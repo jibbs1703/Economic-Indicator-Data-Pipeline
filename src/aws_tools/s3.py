@@ -1,18 +1,19 @@
 import os
 from io import StringIO
-from dotenv import load_dotenv
+
 import boto3
+from dotenv import load_dotenv
 
 
 class S3Buckets:
     @classmethod
     def credentials(cls, region=None):
         """
-        The credentials @classmethod runs when the S3Buckets class is initialized. This method accesses
-        the secret and access keys for the user. These keys are specified in a hidden env file in the
-        directory. When a region is specified, the S3 Bucket methods called are executed in the specified
-        region and if no region is specified, AWS assigns a region while using the services.
-        the region argument
+        The credentials @classmethod runs when the S3Buckets class is initialized. This method 
+        accesses the secret and access keys for the user. These keys are specified in a hidden 
+        env file in the directory. When a region is specified, the S3 Bucket methods called are
+        executed in the specified region and if no region is specified, AWS assigns a region while
+        using the services
 
         :param region:
         :return: secret key, access key, region specified by user
@@ -25,9 +26,9 @@ class S3Buckets:
 
     def __init__(self, secret, access, region):
         """
-        The __init__ method for the S3Buckets class creates the client for accessing the user's AWS account.
-        The client is created using the boto3 module and is made globally available in the S3Buckets class
-        for subsequent methods in the class.
+        The __init__ method for the S3Buckets class creates the client for accessing 
+        the user's AWS account. The client is created using the boto3 module and is made
+        globally available in the S3Buckets class for subsequent methods in the class.
 
         :param secret: user secret key (loaded from .env file)
         :param access: ser access key (loaded from .env file)
