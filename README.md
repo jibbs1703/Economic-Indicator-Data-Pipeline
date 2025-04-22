@@ -2,70 +2,61 @@
 
 ## Overview
 
-This repository contains an ETL (Extract, Transform, Load) pipeline designed to automate the process of
-data extraction, transformation, and loading into a data warehouse in AWS S3. The pipeline is built using
-Python and is orchestrated via Jenkins. The primary python script, 'etl.py', handles the ETL process, and 
-the entire process is automated through a Jenkins pipeline defined in the Jenkinsfile. The pipeline serves 
-as a foundation and is easily extensible, allowing for additional data sources, transformations, or destinations
-to be added as needed.
+This repository contains an ETL (Extract, Transform, Load) pipeline designed to automate the extraction, transformation, and loading of economic indicator data into a data warehouse in AWS S3. The pipeline is scripted in Python and orchestrated via Apache Airflow, providing robust scheduling, monitoring, and dependency management. 
 
+The entire process is hosted on an AWS EC2 instance, which is provisioned and configured using Infrastructure as Code (IaC) principles. The EC2 instance deployment is automated via Terraform, ensuring repeatable and consistent infrastructure management. The configuration and updates to the pipeline are handled through GitHub Actions as part of the CI/CD workflow.
 
-## Pipeline  Features
+To optimize resource usage and cost efficiency, the EC2 instance is automatically started and stopped at specific intervals using AWS Lambda and Amazon EventBridge. This ensures that the pipeline runs periodically without keeping the server running unnecessarily.
 
-- Automated ETL Process: The pipeline automates the extraction, transformation, and loading of data, ensuring 
-timely updates and consistency across data sources.
+## Pipeline Features
 
-- Virtual Environment Isolation: The ETL job is executed within a dedicated Python virtual environment
-ensuring that all dependencies are properly managed and isolated from the system environment. This could 
-also be done using a Docker Container. 
+- Apache Airflow Orchestration: The ETL workflow is managed using Apache Airflow DAGs, enabling seamless scheduling, dependency handling, and monitoring of data processing tasks.
 
-- Secure Environment Variables: Sensitive data such as API keys, database credentials, and other environment 
-variables are securely managed using Jenkins' credentials binding feature. The environment variables are 
-securely injected into the job at runtime and are not exposed in the code repository, protecting them from
-unauthorized access.
+- Infrastructure as Code (IaC) Deployment: The AWS EC2 instance and its dependencies are provisioned using Terraform, ensuring that infrastructure changes are trackable, repeatable, and maintainable.
 
-- Workspace Cleanup: The pipeline includes a cleanup step to ensure that no sensitive data or unnecessary files
-remain on the server after the job completes.
+- Cloud-Based Hosting: The entire ETL process runs on an AWS EC2 instance, ensuring scalability and flexibility in managing data workflows.
 
+- Automated CI/CD Deployment: The EC2 instance is configured and updated via GitHub Actions, automating the deployment of new features, updates, and patches.
+
+- Scheduled EC2 Start/Stop: The EC2 instance is automatically started and stopped using AWS Lambda and Amazon EventBridge, reducing unnecessary costs while ensuring timely pipeline execution.
+
+- Secure Environment Variables: Sensitive data such as API keys and database credentials are securely managed using Airflow Variables, AWS Secrets Manager, and Terraform.
+
+- Logging and Monitoring: Airflow’s built-in monitoring tools provide detailed execution logs and task tracking, helping identify failures and streamline debugging.
 
 ## Pipeline Orchestration
 
-- Code Checkout: The pipeline begins by pulling the latest code from the specified branch of the Git repository.
-This ensures that the ETL job always runs with the most up-to-date code.
+1. Infrastructure Provisioning (IaC): The EC2 instance and necessary resources (IAM roles, S3 permissions, networking) are provisioned using Terraform, ensuring a structured and automated deployment.
 
-- Setup Virtual Environment: A Python virtual environment (etl-venv) is created and all required Python dependencies
-are installed from the requirements.txt file. This setup ensures that the ETL job runs in a controlled environment 
-with all necessary libraries.
+2. EC2 Instance Configuration: Upon provisioning, GitHub Actions applies configurations, installs dependencies, and sets up Apache Airflow on the server.
 
-- Run ETL Script: The ETL script (etl.py) is executed within the virtual environment. The environment variables required
-for the job are securely passed to the script. These variables are stored in Jenkins and are injected at runtime to 
-avoid exposing sensitive information in the codebase.
+3. Airflow DAG Execution: The pipeline is controlled by an Airflow DAG, which defines the sequence of ETL tasks and their dependencies. Tasks are executed based on a predefined schedule or manual trigger.
 
-- Post Deployment Actions: After the script execution, any temporary files, such as the .env file, are removed to maintain 
-security and cleanliness. The pipeline cleans up the workspace, removing any residual files and deactivating the virtual 
-environment after the job is executed. Success and failure notifications are logged, providing a clear indication
-of the job status. The logs are then collected at a later time for dashboard creation.
+4. Setup Virtual Environment: A Python virtual environment (`etl-venv`) is created, and all required dependencies are installed from `requirements.txt`, ensuring an isolated execution environment.
 
+5. Run ETL Tasks: The `etl.py` script executes data extraction, transformation, and loading steps, leveraging Airflow’s task dependencies to ensure a smooth workflow.
 
-## Running Pipeline
+6. Scheduled EC2 Start/Stop: The EC2 instance is started and stopped periodically using AWS Lambda and Amazon EventBridge, ensuring resource optimization and cost efficiency.
 
-- Clone the Repository
-```
+7. Post Deployment Actions: Temporary files such as `.env` are deleted to maintain security and cleanliness. The pipeline workspace is cleaned, and Airflow logs are collected for analysis.
+
+## Tech Stack
+- Python
+- SQL
+- Apache Airflow
+- AWS EC2
+- Terraform
+- AWS Lambda
+- Amazon EventBridge
+- GitHub Actions
+- AWS S3
+- AWS Secrets Manager
+- AWS RDS (PostgreSQL Engine)
+- Docker (for local development and testing)
+
+## Clone the Repository
+
+```bash
 git clone https://github.com/jibbs1703/Economic-Indicator-Data-Pipeline.git
 cd Economic-Indicator-Data-Pipeline
 ```
-
-- Install Java and Jenkins on Server/Computer.
-
-- Setup Jenkins Pipeline on Jenkins UI.
-
-- Create a new Jenkins Pipeline job.
-
-- Configure the job to use the Jenkinsfile from this repository.
-
-- Ensure that your environment variables (e.g., credentials, API keys) are securely stored in Jenkins and referenced correctly in the Jenkinsfile.
-
-- Set up a trigger (e.g., on code changes to specified branch) to run the ETL job automatically.
-
-- Monitor the job via the Jenkins console output to ensure it completes successfully.
-
