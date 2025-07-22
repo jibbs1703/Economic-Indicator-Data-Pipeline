@@ -1,12 +1,12 @@
 # Economic-Indicator-Data-Pipeline
+[![CI-CD](https://github.com/jibbs1703/Economic-Indicator-Data-Pipeline/actions/workflows/ci-cd.yaml/badge.svg?branch=main)](https://github.com/jibbs1703/Economic-Indicator-Data-Pipeline/actions/workflows/ci-cd.yaml)
 ![Python Version](https://img.shields.io/badge/python-3.12-blue)
-![AWS](https://img.shields.io/badge/AWS-cloud-yellow)
-![Terraform](https://img.shields.io/badge/Terraform-IaC-purple)
-![pre-commit](https://img.shields.io/badge/pre--commit-enabled-yellow)
 ![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)
 ![license](https://img.shields.io/github/license/peaceiris/actions-gh-pages.svg)
-![Docker](https://img.shields.io/badge/Docker-container-blue)
-![Last Commit](https://img.shields.io/github/last-commit/jibbs1703/Economic-Indicator-Data-Pipeline)
+![Docker](https://img.shields.io/badge/Docker-v43-blue?logo=docker&style=flat)
+![Terraform](https://img.shields.io/badge/Terraform-v6.0.0-blue?logo=terraform&style=flat)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-v16.0-blue?logo=postgresql&style=flat)
+
 
 ## Overview
 

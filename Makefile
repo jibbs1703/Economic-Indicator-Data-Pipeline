@@ -1,5 +1,5 @@
 # Default commit message
-COMMIT_MSG ?= "repository setup"
+COMMIT_MSG ?= "added docker compose file to setup airflow"
 
 # Target to add changes to staging
 add:
