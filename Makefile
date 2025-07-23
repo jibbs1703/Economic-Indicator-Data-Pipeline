@@ -1,5 +1,5 @@
 # Default commit message
-COMMIT_MSG ?= "added .env.example file"
+COMMIT_MSG ?= "updated description file, added terraform files, and updated Makefile"
 
 # Lint Scripts Locally
 lint:

@@ -68,3 +68,15 @@ To optimize resource usage and cost efficiency, the EC2 instance is automaticall
 git clone https://github.com/jibbs1703/Economic-Indicator-Data-Pipeline.git
 cd Economic-Indicator-Data-Pipeline
 ```
+
+```bash
+docker compose up airflow-init
+```
+
+```bash
+docker compose up
+```
+
+```bash
+docker compose up
+```
