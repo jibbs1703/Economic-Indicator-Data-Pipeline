@@ -1,5 +1,5 @@
 # Default commit message
-COMMIT_MSG ?= "updated description file, added terraform files, and updated Makefile"
+COMMIT_MSG ?= "refactored CI pipeline configuration file, infrastructure setup directories"
 
 # Lint Scripts Locally
 lint:
