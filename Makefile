@@ -1,5 +1,25 @@
 # Default commit message
-COMMIT_MSG ?= "repository setup"
+COMMIT_MSG ?= "refactored CI pipeline configuration file, infrastructure setup directories"
+
+# Lint Scripts Locally
+lint:
+	ruff check ./backend
+
+# Run Tests Locally
+test: lint
+	pytest ./tests -v
+
+# Clear Uncommitted Files
+clear_pycache:
+	find . -type d -name '__pycache__' -exec rm -rf {} +
+
+clear_ruff: clear_pycache
+	find . -type d -name '.ruff_cache' -exec rm -rf {} +
+
+clear_pytest: clear_ruff
+	find . -type d -name '.pytest_cache' -exec rm -rf {} +
+
+clear: clear_pytest
 
 # Target to add changes to staging
 add:
