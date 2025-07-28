@@ -1,5 +1,5 @@
 # Default commit message
-COMMIT_MSG ?= "tests for api data extraction"
+COMMIT_MSG ?= "completed tests for data extraction phase"
 
 # Lint Scripts Locally
 lint:
