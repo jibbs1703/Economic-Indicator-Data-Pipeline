@@ -1,5 +1,5 @@
 # Default commit message
-COMMIT_MSG ?= "refactored CI pipeline configuration file, infrastructure setup directories"
+COMMIT_MSG ?= "tests for api data extraction"
 
 # Lint Scripts Locally
 lint:
