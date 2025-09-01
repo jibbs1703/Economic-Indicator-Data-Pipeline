@@ -76,7 +76,3 @@ docker compose up airflow-init
 ```bash
 docker compose up
 ```
-
-```bash
-docker compose up
-```
